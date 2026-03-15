@@ -32,9 +32,9 @@ public class CarroControllerTest {
 	@BeforeEach //executa antes de qualquer teste
 	void setup () {
 		List<Carro> carros = new ArrayList<>();
-		carros.add(new Carro((long)1, "nome1", 1990, null, null));
-		carros.add(new Carro((long)2, "nome2", 1991, null, null));
-		carros.add(new Carro((long)3, "nome3", 1992, null, null));
+		carros.add(new Carro((long)1, "nome1", 1990, "", null, null));
+		carros.add(new Carro((long)2, "nome2", 1991, "", null, null));
+		carros.add(new Carro((long)3, "nome3", 1992, "", null, null));
 		
 		when(carroR.findAll()).thenReturn(carros);
 	}

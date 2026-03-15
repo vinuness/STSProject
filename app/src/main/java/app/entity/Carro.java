@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,15 @@ public class Carro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull(message = "Nome não pode ser nulo")
 	private String nome;
+	
+	@NotNull(message = "Ano não pode ser nulo")
 	private Integer ano;
+	
+	@NotNull(message = "Modelo não pode ser nulo")
+	private String modelo;
 	
 	//Many Carro para One Marca, ou seja, n carros para 1 marca
 	@ManyToOne(cascade = CascadeType.ALL) //irá considerar todas as marcas em cascata

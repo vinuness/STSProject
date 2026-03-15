@@ -51,7 +51,7 @@ public class CarroController {
 			String mensagem = this.carroService.salvarCarro(carro);
 			return new ResponseEntity<String>(mensagem, HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Deu esse erro aqui: " +e.getMessage(),HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class CarroController {
 			String mensagem = this.carroService.atualizarCarro(Id, carro);
 			return new ResponseEntity<String>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Deu esse erro aqui: " +e.getMessage(),HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class CarroController {
 			String mensagem = this.carroService.deletarCarro(Id);
 			return new ResponseEntity<String>(mensagem, HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Deu esse erro aqui: " +e.getMessage(),HttpStatus.BAD_REQUEST);
 		}
 	}
 	
