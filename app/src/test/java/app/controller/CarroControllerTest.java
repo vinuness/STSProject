@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,17 @@ public class CarroControllerTest {
 	@MockitoBean
 	CarroRepository carroR;
 	
+	
+	@BeforeEach //executa antes de qualquer teste
+	void setup () {
+		List<Carro> carros = new ArrayList<>();
+		carros.add(new Carro((long)1, "nome1", 1990, null, null));
+		carros.add(new Carro((long)2, "nome2", 1991, null, null));
+		carros.add(new Carro((long)3, "nome3", 1992, null, null));
+		
+		when(carroR.findAll()).thenReturn(carros);
+	}
+	
 	@Test
 	void cenario01() {
 		ResponseEntity<List<Carro>> resultado = this.carroController.listarCarros();
@@ -36,13 +48,6 @@ public class CarroControllerTest {
 	@Test
 	void cenario02() {
 		//Com mock
-		
-		List<Carro> carros = new ArrayList<>();
-		carros.add(new Carro((long)1, "nome1", 1990, null, null));
-		carros.add(new Carro((long)2, "nome2", 1991, null, null));
-		carros.add(new Carro((long)3, "nome3", 1992, null, null));
-		
-		when(carroR.findAll()).thenReturn(carros);
 		
 		ResponseEntity<List<Carro>> retorno = this.carroController.listarCarros();
 		assertEquals(HttpStatus.OK, retorno.getStatusCode());
