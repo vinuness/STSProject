@@ -99,7 +99,7 @@ public class CarroController {
 	public ResponseEntity<List<Carro>> findAcimaAno(@RequestParam Integer ano){
 		try {
 			List<Carro> carros = this.carroService.findAcimaAno(ano);
-			return new ResponseEntity<>(carros, HttpStatus.OK);
+			return new ResponseEntity<List<Carro>>(carros, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
